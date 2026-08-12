@@ -8,20 +8,20 @@ from agent import generate_comment, generate_post
 st.markdown("""
     <style>
     .stApp {
-        background-color: #f0f7ff;
+        background-color: ##fff5f5;
     }
     h1 {
-        color: #1e3a8a;
+        color: #800000;
         font-family: 'Helvetica Neue', sans-serif;
     }
     .stButton>button {
-        background-color: #2563eb;
+        background-color: #800000;
         color: white;
         border-radius: 8px;
         border: none;
     }
     .stButton>button:hover {
-        background-color: #1d4ed8;
+        background-color: #5a0000;
         color: white;
         border: none;
     }
