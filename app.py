@@ -67,7 +67,8 @@ openai_client = OpenAI(api_key=openai_api_key)
 
 # --- Topic input ------------------------------------------------
 
-topic = st.text_input('Enter a topic:', key='topic')
+topic = st.text_input('Enter a topic:', value=st.session_state.topic)
+st.session_state.topic = topic
 
 col1, col2 = st.columns(2)
 
