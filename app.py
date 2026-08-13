@@ -134,7 +134,7 @@ if st.button('Send to Buffer'):
 
 with st.sidebar:
     st.header("Content Ideas 💡")
-    new_idea = st.text_input("Save a ne idea:", key="new_idea_input")
+    new_idea = st.text_input("Save an idea:", key="new_idea_input")
     if st.button("Save Idea"):
         if new_idea:
             save_idea(new_idea)
