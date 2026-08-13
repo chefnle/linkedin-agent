@@ -2,7 +2,7 @@ import streamlit as st
 import os
 from anthropic import Anthropic
 from openai import OpenAI
- from agent import generate_comment, generate_post, schedule_post_to_buffer, save_idea, get_ideas, delete_idea
+from agent import generate_comment, generate_post, schedule_post_to_buffer, save_idea, get_ideas, delete_idea
 
 # Custom CSS for a beautiful theme
 st.markdown("""
