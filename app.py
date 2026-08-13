@@ -2,7 +2,7 @@ import streamlit as st
 import os
 from anthropic import Anthropic
 from openai import OpenAI
-from agent import generate_comment, generate_post, schedule_post_to_buffer, save_idea, get_ideas
+ from agent import generate_comment, generate_post, schedule_post_to_buffer, save_idea, get_ideas, delete_idea
 
 # Custom CSS for a beautiful theme
 st.markdown("""
@@ -144,12 +144,16 @@ with st.sidebar:
             st.rerun()
 
 saved_ideas = get_ideas()
-
 if saved_ideas:
     st.write('---')
-    st.write('Select a saved idea:')
-
+    st.write('Select or delete a saved idea:')
     for idx, idea in enumerate(saved_ideas):
-        if st.button(idea, key=f"idea_{idx}"):
-            st.session_state.topic = idea
-            st.rerun()       
+        col_select, col_delete = st.columns([4, 1])
+        with col_select:
+            if st.button(idea, key=f"idea_{idx}"):
+                st.session_state.topic = idea
+                st.rerun()
+        with col_delete:
+            if st.button("🗑️", key=f"del_{idx}":
+                delete_idea(idea)
+                st.rerun()
