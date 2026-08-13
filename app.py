@@ -154,6 +154,6 @@ if saved_ideas:
                 st.session_state.topic = idea
                 st.rerun()
         with col_delete:
-            if st.button("🗑️", key=f"del_{idx}":
+            if st.button("🗑️", key=f"del_{idx}"):
                 delete_idea(idea)
                 st.rerun()
