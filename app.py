@@ -2,7 +2,7 @@ import streamlit as st
 import os
 from anthropic import Anthropic
 from openai import OpenAI
-from agent import generate_comment, generate_post, schedule_post_to_buffer
+from agent import generate_comment, generate_post, schedule_post_to_buffer, save_idea, get_ideas
 
 # Custom CSS for a beautiful theme
 st.markdown("""
@@ -131,3 +131,19 @@ if st.button('Send to Buffer'):
             st.error(f'Buffer Error: {result["data"]["createPost"]["message"]}')
         else:
             st.success('Success!')
+
+with st.sidebar:
+    st.header("Content Ideas 💡")
+    new_idea = st.text_input("Save a ne idea:", key="new_idea_input")
+    if st.button("Save Idea"):
+        if new_idea:
+            save_idea(new_idea)
+            st.success("Idea saved!")
+            st.rerun()
+
+    saved_ideas = get_ideas()
+    if saved_ideas:
+        st.write("---")
+        st.write("Saved Ideas:")
+        for idea in saved_ideas:
+            st.write(f"- {idea}")           
