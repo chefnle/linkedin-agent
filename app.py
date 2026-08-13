@@ -2,7 +2,7 @@ import streamlit as st
 import os
 from anthropic import Anthropic
 from openai import OpenAI
-from agent import generate_comment, generate_post
+from agent import generate_comment, generate_post, schedule_post_to_buffer
 
 # Custom CSS for a beautiful theme
 st.markdown("""
@@ -114,3 +114,20 @@ with col2:
                     )
                     st.session_state.image_path = generate_post_image(openai_client, st.session_state.image_prompt)
                     st.rerun()
+
+                    st.write('---')
+
+buffer_option = st.radio('Buffer Action:', ['Schedule to Queue', 'Save as Draft'])
+
+if st.button('Send to Buffer'):
+    save_to_draft = (buffer_option == 'Save as Draft')
+
+    with st.spinner('Sending...'):
+        result = schedule_post_to_buffer(st.session_state.post_draft, save_to_draft)
+
+        if 'errors' in result:
+            st.error(f'Error: {result["errors"]}')
+        elif 'data' in result and result['data'].get('createPost', {}).get('message'):
+            st.error(f'Buffer Error: {result["data"]["createPost"]["message"]}')
+        else:
+            st.success('Success!')
