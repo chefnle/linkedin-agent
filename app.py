@@ -4,11 +4,11 @@ from anthropic import Anthropic
 from openai import OpenAI
 from agent import generate_comment, generate_post
 
-# Custom CSS for a beautiful blue theme
+# Custom CSS for a beautiful theme
 st.markdown("""
     <style>
     .stApp {
-        background-color: #fff5f5;
+        background-color: #ffffff;
     }
     h1 {
         color: #1e3a8a;
@@ -32,7 +32,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title('LinkedIn Agent 🚀')
+st.title('LinkedIn Agent 🎯')
 
 if 'comment_draft' not in st.session_state:
     st.session_state.comment_draft = ""
