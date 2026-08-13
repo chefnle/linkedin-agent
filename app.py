@@ -75,8 +75,8 @@ with col1:
 
 with col2:
     if st.button('Draft Post'):
-        api_key = os.environ.get("ANTHROPIC_API_KEY")
-        openai_key = os.environ.get("OPENAI_API_KEY")
+        api_key = os.environ.get('ANTHROPIC_API_KEY') or st.secrets.get('ANTHROPIC_API_KEY')
+        openai_key = os.environ.get('OPENAI_API_KEY') or st.secrets.get('OPENAI_API_KEY')
         client = Anthropic(api_key=api_key)
         openai_client = OpenAI(api_key=openai_key)
         
@@ -105,8 +105,8 @@ with col2:
             
             image_feedback = st.text_input('Type feedback to revise image:', key='image_fb')
             if st.button('Revise Image'):
-                api_key = os.environ.get("ANTHROPIC_API_KEY")
-                openai_key = os.environ.get("OPENAI_API_KEY")
+                api_key = os.environ.get('ANTHROPIC_API_KEY') or st.secrets.get('ANTHROPIC_API_KEY')
+                openai_key = os.environ.get('OPENAI_API_KEY') or st.secrets.get('OPENAI_API_KEY')
                 client = Anthropic(api_key=api_key)
                 openai_client = OpenAI(api_key=openai_key)
                 with st.spinner('Revising image...'):
