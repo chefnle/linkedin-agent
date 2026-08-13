@@ -11,7 +11,7 @@ st.markdown("""
         background-color: #ffffff;
     }
     h1 {
-        color: #1e3a8a;
+        color: #0052cc !important;
         font-family: 'Helvetica Neue', sans-serif;
     }
     .stButton>button {
