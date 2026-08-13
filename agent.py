@@ -299,6 +299,17 @@ def get_ideas() -> list:
     with open("ideas.txt", "r") as f:
         return [line.strip() for line in f.readlines() if line.strip()]
 
+def delete_idea(idea_to_delete: str) -> None:
+    """Remove a single idea from ideas.txt."""
+    ideas = get_ideas()
+
+    if idea_to_delete in ideas:
+        ideas.remove(idea_to_delete)
+
+    with open("ideas.txt", "w") as f:
+        for idea in ideas:
+            f.write(idea + "\n")
+
 def main():
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     openai_key = os.environ.get("OPENAI_API_KEY")
