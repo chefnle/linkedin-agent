@@ -46,7 +46,9 @@ if 'image_prompt' not in st.session_state:
 if 'image_path' not in st.session_state:
     st.session_state.image_path = ""
 
-topic = st.text_input('Enter a topic:')
+if 'topic' not in st.session_state: st.session_state.topic = ""
+
+topic = st.text_input('Enter a topic:', value=st.session_state.topic)
 
 col1, col2 = st.columns(2)
 
@@ -141,9 +143,13 @@ with st.sidebar:
             st.success("Idea saved!")
             st.rerun()
 
-    saved_ideas = get_ideas()
-    if saved_ideas:
-        st.write("---")
-        st.write("Saved Ideas:")
-        for idea in saved_ideas:
-            st.write(f"- {idea}")           
+saved_ideas = get_ideas()
+
+if saved_ideas:
+    st.write('---')
+    st.write('Select a saved idea:')
+
+    for idx, idea in enumerate(saved_ideas):
+        if st.button(idea, key=f"idea_{idx}"):
+            st.session_state.topic = idea
+            st.rerun()       
