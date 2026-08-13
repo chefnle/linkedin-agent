@@ -157,3 +157,6 @@ if saved_ideas:
             if st.button("🗑️", key=f"del_{idx}"):
                 delete_idea(idea)
                 st.rerun()
+
+# force reload,
+
