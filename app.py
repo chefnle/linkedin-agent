@@ -8,7 +8,7 @@ from agent import generate_comment, generate_post
 st.markdown("""
     <style>
     .stApp {
-        background-color: ##fff5f5;
+        background-color: #fff5f5;
     }
     h1 {
         color: #1e3a8a;
