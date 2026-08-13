@@ -78,6 +78,7 @@ with col2:
         api_key = os.environ.get("ANTHROPIC_API_KEY")
         openai_key = os.environ.get("OPENAI_API_KEY")
         client = Anthropic(api_key=api_key)
+        openai_client = OpenAI(api_key=openai_key)
         
         with st.spinner('Drafting post and generating image...'):
             post_text, image_prompt, saved_image_path = generate_post(client, openai_client, topic)
