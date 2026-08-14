@@ -2,3 +2,4 @@ streamlit
 anthropic 
 openai 
 requests
+fpdf2
